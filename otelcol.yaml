@@ -2,10 +2,13 @@ receivers:
   otlp:
     protocols:
       http:
+        # `opentelemetry-rust` (which is used internally in Deno) assumes that a collector is running on `http://localhost:4318` by default.
+        # See https://github.com/open-telemetry/opentelemetry-rust/blob/opentelemetry-otlp-0.27.0/opentelemetry-otlp/src/exporter/mod.rs#L60
         endpoint: localhost:4318
 processors:
   batch:
 exporters:
+  # https://github.com/open-telemetry/opentelemetry-collector/blob/v0.114.0/exporter/debugexporter/README.md
   debug:
     verbosity: detailed
 service:
