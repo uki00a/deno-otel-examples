@@ -7,4 +7,4 @@ const server = Deno.serve({
       .then((body) => console.info(body))
       .finally(() => server.shutdown());
   },
-}, (req) => new Response("OK"));
+}, (_req) => new Response("OK"));
